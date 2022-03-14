@@ -13,34 +13,38 @@ const teamOneLabel = document.getElementById('team-one-name');
 const teamTwoLabel = document.getElementById('team-two-name');
 
 // create an array to hold on to the state of past games
+let pastGames = [];
 
 let name1 = '';
-let name2 =  '';
+let name2 = '';
 let score1 = 0;
 let score2 = 0;
 
 nameForm.addEventListener('submit', (e) => {
     // don't forget to prevent the default form behavior!
-
+    e.preventDefault();
     // get the name data from the form
-
+    let nameData1 = document.getElementsByName('team-one')[0];
+    let nameData2 = document.getElementsByName('team-two')[0];
     // set the state to this data from the form
-
+    name1 = nameData1.value;
+    name2 = nameData2.value;
     // reset the form values
-
+    nameData1.value = '';
+    nameData2.value = '';
     // refresh the current game element with new data by calling the appropriate function
+    refreshCurrentGameEl();
 });
 
 
 teamOneAddButton.addEventListener('click', () => {
-    // increment the current state for team one's score
-    
-    // refresh the current game element with new data by calling the appropriate function
+    score1++;
+    refreshCurrentGameEl();
 });
 
 teamTwoAddButton.addEventListener('click', () => {
     // increment the current state for team two's score
-
+    score2++;
     refreshCurrentGameEl();
 });
 
